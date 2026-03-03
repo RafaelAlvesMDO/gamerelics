@@ -32,9 +32,9 @@ export const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 16,
-    backgroundColor: "#7c3aed1a", // CHANGE TO PRIMARY COLOR [TO DECIDE]
+    backgroundColor: "#7c3aed1a", // CHANGE TO SECONDARY COLOR [TO DECIDE] 
     borderWidth: 1,
-    borderColor: "#7c3aed4d", // CHANGE TO PRIMARY COLOR [TO DECIDE]
+    borderColor: "#7c3aed4d", // CHANGE TO SECONDARY COLOR [TO DECIDE] 
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 12,
@@ -105,14 +105,14 @@ export const styles = StyleSheet.create({
   },
 
   forgot: {
-    color: "#7c3aed", // CHANGE TO PRIMARY COLOR [TO DECIDE]
+    color: colorsPalette.primary,
     alignSelf: "flex-end",
     marginBottom: 12,
   },
 
   button: {
     height: 48,
-    backgroundColor: "#7c3aed", // CHANGE TO PRIMARY COLOR [TO DECIDE]
+    backgroundColor: colorsPalette.primary,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -138,7 +138,7 @@ export const styles = StyleSheet.create({
   },
 
   authLink: {
-    color: "#7c3aed", // CHANGE TO PRIMARY COLOR [TO DECIDE]
+    color: colorsPalette.primary,
     fontWeight: "600",
   },
 });
