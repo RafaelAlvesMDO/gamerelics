@@ -1,17 +1,17 @@
-import { colorsPalette } from "@/src/themes/colorsPalette";
+import { Button } from "@/src/components/button";
+import { Input } from "@/src/components/input";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import { Eye, EyeOff, Gamepad2, Lock, Mail } from "lucide-react-native";
+import { Gamepad2, Lock, Mail } from "lucide-react-native";
 import React, { useState } from "react";
 import {
   Image,
   ScrollView,
   Text,
-  TextInput,
   TouchableOpacity,
   View
 } from "react-native";
-import { styles } from './authStyleSheet';
+import { styles } from '../../styles/authStyleSheet';
 
 export default function Login() {
   const router = useRouter();
@@ -55,59 +55,21 @@ export default function Login() {
           Acesse sua coleção
         </Text>
 
-        {/* Email */}
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>E-mail</Text>
-          <View style={styles.inputWrapper}>
-            <Mail size={18} color={colorsPalette.textSecondary} style={styles.iconLeft} />
-            <TextInput
-              placeholder="seu@email.com"
-              placeholderTextColor={colorsPalette.textSecondary}
-              style={styles.input}
-            />
-          </View>
-        </View>
+        {/* E-mail */}
+        <Input label="E-mail" placeholder="seu@email.com" icon={Mail}/>
 
-        {/* Senha */}
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.inputWrapper}>
-            <Lock size={18} color={colorsPalette.textSecondary} style={styles.iconLeft} />
-
-            <TextInput
-              secureTextEntry={!showPassword}
-              placeholder="••••••••"
-              placeholderTextColor={colorsPalette.textSecondary}
-              style={[styles.input, { paddingRight: 40 }]}
-            />
-
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-              style={styles.iconRight}
-            >
-              {showPassword ? (
-                <EyeOff size={18} color={colorsPalette.textSecondary} />
-              ) : (
-                <Eye size={18} color={colorsPalette.textSecondary} />
-              )}
-            </TouchableOpacity>
-          </View>
-        </View>
+        {/* Password */}
+        <Input label="Senha" placeholder="••••••••" icon={Lock} secureTextEntry/>
 
         {/* Forgot */}
         <TouchableOpacity>
           <Text style={styles.forgot}>Esqueci minha senha</Text>
         </TouchableOpacity>
 
+        {/* Login Button */}
+        <Button title="Entrar" onPress={() => console.log('FUNCIONANDO - ENTRAR')}></Button>
 
-        {/* Button */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            Entrar
-          </Text>
-        </TouchableOpacity>
-
-        {/* Toggle */}
+        {/* Create Account Redirection */}
         <View style={styles.authTextRow}>
           <Text style={styles.authText}>
             Não tem conta?
