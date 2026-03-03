@@ -1,6 +1,7 @@
 // COLOR PALETTE USED DURING THE WHOLE APP
 
 export const colorsPalette = {
+  primary: "#7c3aed",
   background: "#0f0f0f",
   textPrimary: "#FFFFFF",
   textSecondary: "#B3B3B3",
