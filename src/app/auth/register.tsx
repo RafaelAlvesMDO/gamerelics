@@ -1,17 +1,17 @@
-import { colorsPalette } from "@/src/themes/colorsPalette";
+import { Button } from "@/src/components/button";
+import { Input } from "@/src/components/input";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import { Eye, EyeOff, Gamepad2, Lock, Mail } from "lucide-react-native";
+import { Gamepad2, Lock, Mail } from "lucide-react-native";
 import React, { useState } from "react";
 import {
   Image,
   ScrollView,
   Text,
-  TextInput,
   TouchableOpacity,
   View
 } from "react-native";
-import { styles } from './authStyleSheet';
+import { styles } from '../../styles/authStyleSheet';
 
 export default function Register() {
   const router = useRouter();
@@ -55,66 +55,20 @@ export default function Register() {
           Crie sua conta para registrar seus jogos
         </Text>
 
-        {/* Nome */}
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Nome</Text>
-          <View style={styles.inputWrapper}>
-            <Gamepad2 size={18} color={colorsPalette.textSecondary} style={styles.iconLeft} />
-            <TextInput
-              placeholder="Seu nome"
-              placeholderTextColor={colorsPalette.textSecondary}
-              style={styles.input}
-            />
-          </View>
-        </View>
+        {/* Name */}
+        <Input label="Nome" placeholder="Seu nome" icon={Gamepad2} />
 
-        {/* Email */}
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>E-mail</Text>
-          <View style={styles.inputWrapper}>
-            <Mail size={18} color={colorsPalette.textSecondary} style={styles.iconLeft} />
-            <TextInput
-              placeholder="seu@email.com"
-              placeholderTextColor={colorsPalette.textSecondary}
-              style={styles.input}
-            />
-          </View>
-        </View>
+        {/* E-mail */}
+        <Input label="E-mail" placeholder="seu@email.com" icon={Mail} />
 
-        {/* Senha */}
-        <View style={styles.inputGroup}>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.inputWrapper}>
-            <Lock size={18} color={colorsPalette.textSecondary} style={styles.iconLeft} />
+        {/* Password */}
+        <Input label="Senha" placeholder="••••••••" icon={Lock} secureTextEntry />
 
-            <TextInput
-              secureTextEntry={!showPassword}
-              placeholder="••••••••"
-              placeholderTextColor={colorsPalette.textSecondary}
-              style={[styles.input, { paddingRight: 40 }]}
-            />
 
-            <TouchableOpacity
-              onPress={() => setShowPassword(!showPassword)}
-              style={styles.iconRight}
-            >
-              {showPassword ? (
-                <EyeOff size={18} color={colorsPalette.textSecondary} />
-              ) : (
-                <Eye size={18} color={colorsPalette.textSecondary} />
-              )}
-            </TouchableOpacity>
-          </View>
-        </View>
+        {/* Register Button */}
+        <Button title="Criar conta" onPress={() => console.log('FUNCIONANDO - CADASTRO')}></Button>
 
-        {/* Button */}
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>
-            Criar conta
-          </Text>
-        </TouchableOpacity>
-
-        {/* Toggle */}
+        {/* Login Redirection */}
         <View style={styles.authTextRow}>
           <Text style={styles.authText}>
             Já possui uma conta?
