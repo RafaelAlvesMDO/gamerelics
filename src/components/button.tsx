@@ -1,12 +1,12 @@
 import { colorsPalette } from '@/src/themes/colorsPalette';
-import { GestureResponderEvent, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 export interface ButtonProps {
   title: string;
   backgroundColor?: string;
   style?: ViewStyle;
   textStyle?: TextStyle;
-  onPress?: (event: GestureResponderEvent) => void;
+  onPress?: () => void;
 }
 
 export function Button({
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 8,
+        marginTop: 6,
     },
     
     buttonText: {
