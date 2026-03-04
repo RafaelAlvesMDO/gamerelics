@@ -1,5 +1,6 @@
 import { colorsPalette } from '@/src/themes/colorsPalette';
 import { StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { typography } from '../themes/typhography';
 
 export interface ButtonProps {
   title: string;
@@ -46,6 +47,6 @@ const styles = StyleSheet.create({
     buttonText: {
         color: colorsPalette.textPrimary,
         fontWeight: "600",
-        fontSize: 16,
+        fontSize: typography.normalText,
     },
 })
