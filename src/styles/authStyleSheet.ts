@@ -33,9 +33,9 @@ export const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 16,
-    backgroundColor: "#7c3aed1a", // CHANGE TO SECONDARY COLOR [TO DECIDE] 
+    backgroundColor: "#7c3aed1a",
     borderWidth: 1,
-    borderColor: "#7c3aed4d", // CHANGE TO SECONDARY COLOR [TO DECIDE] 
+    borderColor: "#7c3aed4d", 
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 12,
