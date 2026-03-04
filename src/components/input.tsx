@@ -9,6 +9,7 @@ import {
     TextInputProps,
     View,
 } from "react-native";
+import { typography } from "../themes/typhography";
 
 export interface InputProps extends TextInputProps {
     label: string;
@@ -25,6 +26,7 @@ export function Input({
     ...rest
 }: InputProps) {
     const [showPassword, setShowPassword] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
 
     const isPassword = secureTextEntry === true;
 
@@ -35,7 +37,8 @@ export function Input({
             {/* Show Icon based in your choice */}
             <View style={[
                 styles.inputWrapper,
-                error && styles.inputError
+                isFocused && !error && styles.inputFocused,
+                error && styles.inputError,
             ]}>
                 {Icon && (
                     <Icon
@@ -50,6 +53,8 @@ export function Input({
                     {...rest}
                     secureTextEntry={isPassword && !showPassword}
                     placeholderTextColor={colorsPalette.textSecondary}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
                     style={[
                         styles.input,
                         isPassword && { paddingRight: 40 },
@@ -100,6 +105,7 @@ const styles = StyleSheet.create({
         color: colorsPalette.textPrimary,
         paddingLeft: 36,
         paddingRight: 12,
+        fontSize: typography.normalText
     },
 
     iconLeft: {
@@ -118,7 +124,11 @@ const styles = StyleSheet.create({
 
     errorText: {
         color: colorsPalette.error,
-        fontSize: 14,
+        fontSize: typography.normalText,
         marginTop: 8,
+    },
+
+    inputFocused: {
+        borderColor: colorsPalette.primary,
     },
 })
