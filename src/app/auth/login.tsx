@@ -1,13 +1,15 @@
 import { Button } from "@/src/components/button";
 import { Input } from "@/src/components/input";
+import { colorsPalette } from "@/src/themes/colorsPalette";
 import { loginSchema } from "@/src/validations/loginSchema";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import { Formik } from "formik";
-import { Gamepad2, Lock, Mail } from "lucide-react-native";
+import { Gamepad2, Lock, Mail, MessageCircle } from "lucide-react-native";
 import React, { useState } from "react";
 import {
   Image,
+  Linking,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -18,6 +20,14 @@ import { styles } from '../../styles/authStyleSheet';
 export default function Login() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+
+  function handleWhatsApp() {
+    Linking.openURL("https://wa.me/5582986554328");
+  }
+
+  function handleGmail() {
+    Linking.openURL("mailto:gamerelics-feedback@gmail.com");
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -37,7 +47,7 @@ export default function Login() {
 
         <View style={styles.topContent}>
           <View style={styles.iconBox}>
-            <Gamepad2 size={32} color="#7c3aed" />
+            <Gamepad2 size={24} color="#7c3aed" />
           </View>
 
           <Text style={styles.topTitle}>GameRelics</Text>
@@ -120,6 +130,26 @@ export default function Login() {
               Criar conta
             </Text>
           </TouchableOpacity>
+        </View>
+
+        <View style={styles.containerFeedback}>
+          <Text style={styles.titleFeedback}>Feedback</Text>
+
+          <View style={styles.iconsContainer}>
+            <TouchableOpacity
+              style={styles.iconButton}
+              onPress={handleWhatsApp}
+            >
+              <MessageCircle size={24} color={colorsPalette.primary} />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.iconButton}
+              onPress={handleGmail}
+            >
+              <Mail size={24} color={colorsPalette.primary} />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </ScrollView>
