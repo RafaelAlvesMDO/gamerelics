@@ -6,6 +6,6 @@ export const colorsPalette = {
   textPrimary: "#FFFFFF",
   textSecondary: "#B3B3B3",
   button: "#4DA3FF",
-  error: "#FF4D4D",
+  error: "#ff4d4f",
   success: "#4CAF50",
 };
