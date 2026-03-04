@@ -1,7 +1,9 @@
 import { Button } from "@/src/components/button";
 import { Input } from "@/src/components/input";
+import { registerSchema } from "@/src/validations/registerSchema";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { Formik } from "formik";
 import { Gamepad2, Lock, Mail } from "lucide-react-native";
 import React, { useState } from "react";
 import {
@@ -55,18 +57,64 @@ export default function Register() {
           Crie sua conta para registrar seus jogos
         </Text>
 
-        {/* Name */}
-        <Input label="Nome" placeholder="Seu nome" icon={Gamepad2} />
+        {/* VALIDATION */}
+        <Formik
+                  initialValues={{ name:"", email: "", password: "" }}
+                  validationSchema={registerSchema}
+                  onSubmit={(values) => {
+                    console.log(values);
+                  }}
+                >
+                  {({
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    values,
+                    errors,
+                    touched,
+                  }) => (
+                    <>
+                      {/* Name */}
+                      <Input label="Nome" placeholder="Seu nome" icon={Gamepad2}
+                        value={values.name}
+                        onChangeText={handleChange("name")}
+                        onBlur={handleBlur("name")}
+                        error={
+                          touched.name && errors.name
+                            ? errors.name
+                            : undefined
+                        } />
 
-        {/* E-mail */}
-        <Input label="E-mail" placeholder="seu@email.com" icon={Mail} />
-
-        {/* Password */}
-        <Input label="Senha" placeholder="••••••••" icon={Lock} secureTextEntry />
-
-
-        {/* Register Button */}
-        <Button title="Criar conta" onPress={() => console.log('FUNCIONANDO - CADASTRO')}></Button>
+                      {/* E-mail */}
+                      <Input label="E-mail" placeholder="seu@email.com" icon={Mail}
+                        value={values.email}
+                        onChangeText={handleChange("email")}
+                        onBlur={handleBlur("email")}
+                        error={
+                          touched.email && errors.email
+                            ? errors.email
+                            : undefined
+                        } />
+        
+                      {/* Password */}
+                      <Input label="Senha" placeholder="••••••••" icon={Lock}
+                        secureTextEntry
+                        value={values.password}
+                        onChangeText={handleChange("password")}
+                        onBlur={handleBlur("password")}
+                        error={
+                          touched.password && errors.password
+                            ? errors.password
+                            : undefined
+                        } />
+        
+                      <Button
+                        title="Criar conta"
+                        onPress={() => handleSubmit()}
+                      />
+                    </>
+                  )}
+                </Formik>
 
         {/* Login Redirection */}
         <View style={styles.authTextRow}>

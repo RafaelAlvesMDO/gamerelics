@@ -1,7 +1,9 @@
 import { Button } from "@/src/components/button";
 import { Input } from "@/src/components/input";
+import { loginSchema } from "@/src/validations/loginSchema";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { Formik } from "formik";
 import { Gamepad2, Lock, Mail } from "lucide-react-native";
 import React, { useState } from "react";
 import {
@@ -55,19 +57,57 @@ export default function Login() {
           Acesse sua coleção
         </Text>
 
-        {/* E-mail */}
-        <Input label="E-mail" placeholder="seu@email.com" icon={Mail}/>
+        {/* VALIDATION */}
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={loginSchema}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+          }) => (
+            <>
+              {/* E-mail */}
+              <Input label="E-mail" placeholder="seu@email.com" icon={Mail}
+                value={values.email}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                error={
+                  touched.email && errors.email
+                    ? errors.email
+                    : undefined
+                } />
 
-        {/* Password */}
-        <Input label="Senha" placeholder="••••••••" icon={Lock} secureTextEntry/>
+              {/* Password */}
+              <Input label="Senha" placeholder="••••••••" icon={Lock}
+                secureTextEntry
+                value={values.password}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                error={
+                  touched.password && errors.password
+                    ? errors.password
+                    : undefined
+                } />
 
-        {/* Forgot */}
-        <TouchableOpacity>
-          <Text style={styles.forgot}>Esqueci minha senha</Text>
-        </TouchableOpacity>
+              <TouchableOpacity>
+                <Text style={styles.forgot}>Esqueci minha senha</Text>
+              </TouchableOpacity>
 
-        {/* Login Button */}
-        <Button title="Entrar" onPress={() => console.log('FUNCIONANDO - ENTRAR')}></Button>
+              <Button
+                title="Entrar"
+                onPress={() => handleSubmit()}
+              />
+            </>
+          )}
+        </Formik>
 
         {/* Create Account Redirection */}
         <View style={styles.authTextRow}>
@@ -82,7 +122,7 @@ export default function Login() {
           </TouchableOpacity>
         </View>
       </View>
-
     </ScrollView>
+
   );
 }
