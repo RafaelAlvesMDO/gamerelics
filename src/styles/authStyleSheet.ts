@@ -1,5 +1,6 @@
 import { colorsPalette } from '@/src/themes/colorsPalette';
 import { StyleSheet } from 'react-native';
+import { typography } from '../themes/typhography';
 
 export const styles = StyleSheet.create({
   container: {
@@ -41,13 +42,13 @@ export const styles = StyleSheet.create({
   },
 
   topTitle: {
-    fontSize: 24,
+    fontSize: typography.title,
     fontWeight: "bold",
     color: colorsPalette.textPrimary,
   },
 
   topSubtitle: {
-    fontSize: 14,
+    fontSize: typography.normalText,
     color: colorsPalette.textSecondary,
     marginTop: 4,
   },
@@ -58,14 +59,14 @@ export const styles = StyleSheet.create({
   },
 
   formTitle: {
-    fontSize: 24,
+    fontSize: typography.title,
     fontWeight: "600",
     color: colorsPalette.textPrimary,
     marginBottom: 4,
   },
 
   formSubtitle: {
-    fontSize: 14,
+    fontSize: typography.normalText,
     color: colorsPalette.textSecondary,
     marginBottom: 24,
   },
@@ -74,22 +75,48 @@ export const styles = StyleSheet.create({
     color: colorsPalette.primary,
     alignSelf: "flex-end",
     marginBottom: 12,
+    fontSize: typography.normalText,
   },
 
   authTextRow: {
     flexDirection: "row",
     justifyContent: "center",
     marginTop: 30,
-    marginBottom: 40,
+    marginBottom: 30,
   },
 
   authText: {
     color: "#a1a1aa",
     marginRight: 4,
+    fontSize: typography.normalText,
   },
 
   authLink: {
     color: colorsPalette.primary,
     fontWeight: "600",
+    fontSize: typography.normalText,
+  },
+
+  containerFeedback: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  titleFeedback: {
+    color: colorsPalette.textSecondary,
+    fontSize: typography.normalText,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+
+  iconsContainer: {
+    color: colorsPalette.primary,
+    flexDirection: "row",
+    gap: 10,
+  },
+
+  iconButton: {
+    padding: 12,
   },
 });
