@@ -13,6 +13,7 @@ import {
 export interface InputProps extends TextInputProps {
     label: string;
     icon?: LucideIcon;
+    error?: string;
 }
 
 export function Input({
@@ -20,6 +21,7 @@ export function Input({
     icon: Icon,
     secureTextEntry,
     style,
+    error,
     ...rest
 }: InputProps) {
     const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +33,10 @@ export function Input({
             <Text style={styles.label}>{label}</Text>
 
             {/* Show Icon based in your choice */}
-            <View style={styles.inputWrapper}>
+            <View style={[
+                styles.inputWrapper,
+                error && styles.inputError
+            ]}>
                 {Icon && (
                     <Icon
                         size={18}
@@ -66,6 +71,8 @@ export function Input({
                     </Pressable>
                 )}
             </View>
+            {/* Error Message */}
+            {error && <Text style={styles.errorText}>{error}</Text>}
         </View>
     );
 }
@@ -103,5 +110,15 @@ const styles = StyleSheet.create({
     iconRight: {
         position: "absolute",
         right: 10,
+    },
+
+    inputError: {
+        borderColor: colorsPalette.error,
+    },
+
+    errorText: {
+        color: colorsPalette.error,
+        fontSize: 14,
+        marginTop: 8,
     },
 })
