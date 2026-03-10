@@ -10,7 +10,6 @@ export const colorsPalette = {
   playing: "#6d28d9",
   played: "#22c55e",
   backlog: "#eab308",
-  button: "#4DA3FF",
   card: "#1c1c1c", // "#1a1a20" [OLD]
   border: "#79797998",
   blur: "#28282899",
