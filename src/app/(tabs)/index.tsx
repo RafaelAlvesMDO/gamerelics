@@ -84,7 +84,7 @@ export default function Index() {
                                 games={games}
                                 headerColor={colorsPalette.card}
                                 borderBottomColor={cat.color}
-                                // onPress={() => router.push(`/categoria/${cat.id}`)}
+                                onPress={() => router.push(`/(tabs)/gameSection?status=${cat.id}`)}
                             />
                         );
 
