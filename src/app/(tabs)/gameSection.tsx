@@ -1,5 +1,5 @@
 import { sampleGames } from "@/src/data/sampleGames";
-import { styles } from "@/src/styles/sectionCardsStyleSheet";
+import { styles } from "@/src/styles/gameSectionStyleSheet";
 import { colorsPalette } from "@/src/themes/colorsPalette";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react-native";
@@ -46,7 +46,7 @@ export default function GameSection() {
                 <View style={styles.backButton} />
             </View>
 
-            {/* Contagem */}
+            {/* Game Count */}
             <View style={styles.statsRow}>
                 <View style={[styles.statCard, { borderColor: STATUS_COLORS[categoryKey] }]}>
                     <Text style={styles.statNumber}>{games.length}</Text>
@@ -56,7 +56,7 @@ export default function GameSection() {
                 </View>
             </View>
 
-            {/* Lista */}
+            {/* Listing */}
             <FlatList
                 data={games}
                 keyExtractor={(item) => item.id}
@@ -71,19 +71,19 @@ export default function GameSection() {
                         <View style={styles.info}>
                             <Text style={styles.gameTitle}>{item.title}</Text>
 
-                            {/* Status badge */}
+                            {/* Category Tag */}
                             <View style={[styles.statusBadge, { backgroundColor: STATUS_COLORS[item.status] + "33" }]}>
                                 <Text style={[styles.statusText, { color: STATUS_COLORS[item.status] }]}>
                                     {STATUS_LABELS[item.status]}
                                 </Text>
                             </View>
 
-                            {/* Tempo de jogo */}
+                            {/* Playtime */}
                             {item.playTime && (
                                 <Text style={styles.playTime}>⏱ {item.playTime}</Text>
                             )}
 
-                            {/* Avaliação — apenas para "played" */}
+                            {/* Rating - Only for Played Games */}
                             {item.status === "played" && item.rating && (
                                 <View style={styles.starsRow}>
                                     {[1, 2, 3, 4, 5].map((star) => (
@@ -98,13 +98,13 @@ export default function GameSection() {
                             )}
                         </View>
 
-                        {/* Seta */}
+                        {/* Button to open Game Detail */}
                         <ChevronRight color={colorsPalette.textSecondary} size={20} style={styles.chevron} />
                     </Pressable>
                 )}
             />
 
-            {/* Botão Novo Jogo */}
+            {/* New Game Button */}
             <Pressable
                 style={[styles.newGameButton, { borderColor: STATUS_COLORS[categoryKey] }]}
                 onPress={() => router.push(`/gameForms?status=${status}`)}
