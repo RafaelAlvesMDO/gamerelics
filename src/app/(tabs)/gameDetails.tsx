@@ -66,15 +66,15 @@ export default function GameDetail() {
                 contentContainerStyle={styles.scrollContent}
                 showsVerticalScrollIndicator={false}
             >
-                {/* Capa */}
+                {/* Image */}
                 <View style={styles.coverContainer}>
                     <Image source={game.coverImg} style={styles.cover} />
                 </View>
 
-                {/* Título */}
+                {/* Title */}
                 <Text style={styles.title}>{game.title}</Text>
 
-                {/* Badge de categoria */}
+                {/* Category Tag */}
                 <View style={[styles.statusBadge, { backgroundColor: statusColor + "22", borderColor: statusColor }]}>
                     <Text style={[styles.statusText, { color: statusColor }]}>
                         {STATUS_LABELS[game.status]}
@@ -84,7 +84,7 @@ export default function GameDetail() {
                 {/* Divider */}
                 <View style={[styles.divider, { backgroundColor: statusColor + "44" }]} />
 
-                {/* Tempo de jogo */}
+                {/* Playtime */}
                 {game.playTime && (
                     <View style={styles.infoRow}>
                         <Clock color={colorsPalette.textSecondary} size={18} />
@@ -93,7 +93,7 @@ export default function GameDetail() {
                     </View>
                 )}
 
-                {/* Avaliação — apenas para "played" */}
+                {/* Rating - Only Played Games */}
                 {game.status === "played" && game.rating && (
                     <View style={styles.infoRow}>
                         <Star color={colorsPalette.textSecondary} size={18} />
@@ -111,7 +111,7 @@ export default function GameDetail() {
                     </View>
                 )}
 
-                {/* Comentário */}
+                {/* Commentaries */}
                 {game.comment && (
                     <>
                         <Text style={styles.sectionLabel}>Comentário</Text>
