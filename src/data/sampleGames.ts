@@ -7,7 +7,7 @@ export interface Game {
   coverImg: ImageSourcePropType
   comment?: string
   playTime?: string
-  rating?: number  // Only for Played
+  rating?: number  // Only for Played Games
 }
 
 export const sampleGames: Game[] = [
