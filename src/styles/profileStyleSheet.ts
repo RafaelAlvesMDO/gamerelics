@@ -13,6 +13,8 @@ export const styles = StyleSheet.create({
     header: {
         paddingTop: 60,
         paddingBottom: 20,
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
 
     headerTitle: {
@@ -84,4 +86,73 @@ export const styles = StyleSheet.create({
         color: colorsPalette.textSecondary,
     },
 
+    logoutButton: {
+        padding: 6,
+    },
+
+    usernameRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8,
+        marginTop: 4,
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "#00000099",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingHorizontal: 32,
+    },
+    modalBox: {
+        width: "100%",
+        backgroundColor: colorsPalette.card,
+        borderRadius: 16,
+        padding: 24,
+        borderWidth: 1,
+        borderColor: colorsPalette.border,
+    },
+    modalTitle: {
+        fontSize: typography.title,
+        fontWeight: "bold",
+        color: colorsPalette.textPrimary,
+        marginBottom: 16,
+    },
+    modalInput: {
+        backgroundColor: colorsPalette.background,
+        borderWidth: 1,
+        borderColor: colorsPalette.border,
+        borderRadius: 10,
+        padding: 12,
+        color: colorsPalette.textPrimary,
+        fontSize: typography.normalText,
+        marginBottom: 16,
+    },
+    modalButtons: {
+        flexDirection: "row",
+        gap: 12,
+    },
+    modalButton: {
+        flex: 1,
+        paddingVertical: 12,
+        borderRadius: 10,
+        alignItems: "center",
+    },
+    cancelButton: {
+        backgroundColor: colorsPalette.background,
+        borderWidth: 1,
+        borderColor: colorsPalette.border,
+    },
+    confirmButton: {
+        backgroundColor: colorsPalette.primary,
+    },
+    cancelText: {
+        color: colorsPalette.textSecondary,
+        fontWeight: "600",
+        fontSize: typography.subtitles,
+    },
+    confirmText: {
+        color: colorsPalette.textPrimary,
+        fontWeight: "600",
+        fontSize: typography.subtitles,
+    },
 });
