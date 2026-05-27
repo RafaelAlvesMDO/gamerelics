@@ -14,13 +14,13 @@ export default function RootLayout() {
         },
       }}
     >
-      {/* Grupo de autenticação */}
+      {/* Auth Screens */}
       <Stack.Screen name="(auth)" options={{ headerShown: false }} />
 
-      {/* Grupo das tabs */}
+      {/* Tabs Screens */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      {/* Ecrãs de stack — sem tab bar */}
+      {/* Screen on Stack */}
       <Stack.Screen name="gameSection" options={{ headerShown: false }} />
       <Stack.Screen name="gameForms" options={{ headerShown: false }} />
       <Stack.Screen name="gameDetails" options={{ headerShown: false }} />
