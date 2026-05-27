@@ -1,8 +1,11 @@
+
 import { Button } from "@/src/components/button";
 import { Input } from "@/src/components/input";
+import { auth } from "@/src/firebase-config";
 import { registerSchema } from "@/src/validations/registerSchema";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Formik } from "formik";
 import { Gamepad2, Lock, Mail } from "lucide-react-native";
 import React, { useState } from "react";
@@ -66,8 +69,17 @@ export default function Register() {
           <Formik
             initialValues={{ name: "", email: "", password: "" }}
             validationSchema={registerSchema}
-            onSubmit={(values) => {
-              console.log(values);
+            onSubmit={async (values) => {
+              await createUserWithEmailAndPassword(auth, values.email, values.password)
+                .then(async (userCredential) => {
+                  await updateProfile(userCredential.user, { displayName: values.name });
+                  router.replace("/(auth)/login");
+                })
+                .catch((error) => {
+                  console.log("Código:", error.code);
+                  console.log("Mensagem:", error.message);
+                  alert('Erro: Não foi possível criar o usuário, tente novamente');
+                });
             }}
           >
             {({
