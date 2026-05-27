@@ -1,16 +1,22 @@
-export const usersMock = [
-  {
-    id: 1,
-    email: "rafael@gmail.com",
-    password: "123456",
-    name: "Rafael"
-  },
-];
+import { auth } from "@/src/firebase-config";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile
+} from "firebase/auth";
 
-export function loginMock(email: string, password: string) {
-  const user = usersMock.find(
-    (u) => u.email === email && u.password === password
-  );
+export async function registerUser(name: string, email: string, password: string) {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(userCredential.user, { displayName: name });
+    return userCredential.user;
+}
 
-  return user || null;
+export async function loginUser(email: string, password: string) {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+}
+
+export async function logoutUser() {
+    await signOut(auth);
 }
