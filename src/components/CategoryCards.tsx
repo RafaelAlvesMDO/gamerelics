@@ -6,7 +6,7 @@ import { typography } from "../themes/typhography";
 
 interface Game {
     id: string;
-    coverImg: ImageSourcePropType
+    coverImg?: string | ImageSourcePropType;
 }
 
 interface CategoryCardProps {
@@ -39,16 +39,16 @@ export function CategoryCard({ title, games, headerColor, borderBottomColor, onP
                 {previewGames.map((game) => (
                     <Image
                         key={game.id}
-                        source={game.coverImg}
+                        source={game.coverImg ? { uri: game.coverImg as string } : require("../assets/game-capes/placeholder.jpg")}
                         style={styles.cover}
                     />
                 ))}
 
-                {/* Ver mais */}
+                {/* Show more */}
                 <Pressable onPress={onPress} style={styles.cover}>
 
                     <Image
-                        source={games[3]?.coverImg}
+                        source={games[3]?.coverImg ? { uri: games[3].coverImg as string } : require("../assets/game-capes/placeholder.jpg")}
                         style={styles.cover}
                     />
 
