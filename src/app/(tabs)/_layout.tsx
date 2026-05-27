@@ -41,27 +41,6 @@ export default function Layout() {
           }}
         />
 
-        <Tabs.Screen
-          name="gameSection"
-          options={{
-            href: null,
-          }}
-        />
-
-        <Tabs.Screen
-          name="gameForms"
-          options={{
-            href: null,
-          }}
-        />
-
-        <Tabs.Screen
-          name="gameDetails"
-          options={{
-            href: null,
-          }}
-        />
-
       </Tabs>
     </SafeAreaView>
   );
